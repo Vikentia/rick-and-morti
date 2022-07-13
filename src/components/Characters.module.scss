@@ -1,0 +1,9 @@
+.characterBlock {
+    display: flex;
+    &__name {
+        width: 200px;
+    }
+    &__photo {
+        width: 200px;
+    }
+}

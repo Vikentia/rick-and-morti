@@ -1,4 +1,4 @@
-import { CharacterType } from "../../App"
+import { CharacterType } from "../../components/Characters"
 import { GetCharactersActionType, GET_CHARACTERS } from "../actions/charactersAction"
 
 const initialState = {

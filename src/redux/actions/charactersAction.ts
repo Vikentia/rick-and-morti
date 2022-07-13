@@ -1,4 +1,4 @@
-import { CharacterType } from "../../App"
+import { CharacterType } from "../../components/Characters"
 
 export const GET_CHARACTERS = 'GET_CHARACTERS'
 
