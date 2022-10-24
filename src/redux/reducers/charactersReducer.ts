@@ -1,19 +1,31 @@
-import { CharacterType } from "../../components/Characters"
-import { GetCharactersActionType, GET_CHARACTERS } from "../actions/charactersAction"
+import { Dispatch } from "redux"
+import { CharacterType } from "../../components/Character"
+import { GetCharactersActionType, SET_CHARACTERS, setCharacters } from "../actions/charactersAction"
+import { apiRickAndMorti } from '../../api/instance';
+import { AppThunk } from "../store";
 
 const initialState = {
     characters: [] as CharacterType[] //!!!!
 }
-type InitialStateType = typeof initialState // 
 
-export const charactersReducer = (state: InitialStateType = initialState, action: ActionTypes) => {
+
+export const charactersReducer = (state = initialState, action: CharactersActionTypes): InitialStateType => {
     switch (action.type) {
-        case GET_CHARACTERS:
-            return { ...state, characters: action.payload.charaters }
+        case SET_CHARACTERS:
+            return { ...state, characters: action.payload.characters }
         default:
             return state; //в дефолте не надо возвращать копию, можно оригинал
     }
 }
 
+export const getCharacters = (): AppThunk => {
+    return (dispatch) => {
+        apiRickAndMorti.getCharacters()
+            .then((res) => dispatch(setCharacters(res.data.results)));
+    }
+}
 
-type ActionTypes = GetCharactersActionType
+
+//types
+type InitialStateType = typeof initialState // 
+export type CharactersActionTypes = GetCharactersActionType 

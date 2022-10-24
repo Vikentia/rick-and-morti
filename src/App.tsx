@@ -1,17 +1,29 @@
-import { Header } from "./pages/Header";
+import { HeaderFC } from "./pages/HeaderFC";
 import { Navigation } from "./pages/Navigation";
-import { Content } from "./pages/Content";
+import { ContentFC } from "./pages/Content";
 
-import styles from "./App.module.scss";
+import { Layout } from "antd";
+import "antd/dist/antd.css";
+
+const { Header, Footer, Sider, Content } = Layout;
 
 export const App = () => {
     return (
-        <div className={styles.app}>
-            <Header />
-            <div className={styles.app__main}>
-                <Navigation />
-                <Content />
-            </div>
+        <div>
+            <Layout>
+                <Header>
+                    <HeaderFC />
+                </Header>
+                <Layout>
+                    <Sider>
+                        <Navigation />
+                    </Sider>
+                    <Content>
+                        <ContentFC />
+                    </Content>
+                </Layout>
+                <Footer>Footer</Footer>
+            </Layout>
         </div>
     );
 };

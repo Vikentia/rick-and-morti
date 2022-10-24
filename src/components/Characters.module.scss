@@ -1,9 +1,12 @@
-.characterBlock {
-    display: flex;
-    &__name {
-        width: 200px;
-    }
-    &__photo {
-        width: 200px;
-    }
+.charactersBlock {
+    display: block;
+    padding: 15px;
+    width: 80vw;
+    align-items: center;
+}
+
+input.charactersBlock__input {
+    margin: 10px auto 10px 5px;
+    height: 30px;
+    width: 250px;
 }

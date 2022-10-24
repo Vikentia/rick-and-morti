@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./Header.module.scss";
+import styles from "./HeaderFC.module.scss";
 
-export const Header = () => {
+export const HeaderFC = () => {
     return <div className={styles.header}>Header</div>;
 };

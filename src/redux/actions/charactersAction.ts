@@ -1,9 +1,9 @@
-import { CharacterType } from "../../components/Characters"
+import { CharacterType } from "../../components/Character"
 
-export const GET_CHARACTERS = 'GET_CHARACTERS'
+export const SET_CHARACTERS = 'SET_CHARACTERS'
 
-export const getCharacters = (charaters: CharacterType[]) => {
-    return { type: GET_CHARACTERS, payload: { charaters } } as const;
+export const setCharacters = (characters: CharacterType[]) => {
+    return { type: SET_CHARACTERS, payload: { characters } } as const;
 }
 
-export type GetCharactersActionType = ReturnType<typeof getCharacters>
+export type GetCharactersActionType = ReturnType<typeof setCharacters>

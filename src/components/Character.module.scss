@@ -1,0 +1,26 @@
+.characterBlock {
+    text-align: center;
+    img {
+        width: 350px;
+    }
+
+    .card {
+        width: 24vw;
+        // padding: 0 auto;
+        margin: 5px;
+        &__status {
+            color: red;
+            display: inline-block;
+
+            &_Dead {
+                color: red;
+            }
+            &_Alive {
+                color: green;
+            }
+            &_unknown {
+                color: gray;
+            }
+        }
+    }
+}
