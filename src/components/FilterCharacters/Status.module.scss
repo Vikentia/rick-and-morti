@@ -1,0 +1,9 @@
+.statusBlock {
+    display: flex;
+    &__title {
+        margin: 15px;
+    }
+    &__select {
+        margin-top: 10px;
+    }
+}

@@ -1,5 +1,6 @@
 import styles from "./Character.module.scss";
 import { Card, Col } from "antd";
+import { StatusType } from "./Characters";
 
 export type CharacterType = {
     created: string;
@@ -17,7 +18,6 @@ export type CharacterType = {
 };
 export type GenderType = "Female" | "Male" | "Genderless" | "unknown";
 
-export type StatusType = "Dead" | "Alive" | "unknown";
 
 export type LocationAndOriginType = {
     name: string;
@@ -27,6 +27,12 @@ export type LocationAndOriginType = {
 export const Character: React.FC<{ character: CharacterType }> = ({
     character,
 }) => {
+    const statusColor =
+        character.status === "Alive"
+            ? "#2deb5c"
+            : character.status === "Dead"
+            ? "#ff003a"
+            : "#2d88eb";
     return (
         <div className={styles.characterBlock}>
             <Col span={40}>
@@ -41,8 +47,12 @@ export const Character: React.FC<{ character: CharacterType }> = ({
                     <div>
                         <p>Gender: {character.gender}</p>
                         <p className={styles.card__status}>
-                            Status: <span>{character.status}</span>
+                            Status:{" "}
+                            <span style={{ color: statusColor }}>
+                                {character.status}
+                            </span>
                         </p>
+                        <p>Location: {character.location.name}</p>
                         <p>Species: {character.species}</p>
                         <p>Type: {character.type || "-"}</p>
                     </div>
