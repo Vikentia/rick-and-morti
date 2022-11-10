@@ -9,18 +9,7 @@ import { Search } from "./Search";
 import { Status } from "./FilterCharacters/Status";
 import { Gender } from "./FilterCharacters/Gender";
 import { Species } from "./FilterCharacters/Species";
-
-export type ResponseType<T = void> = {
-    //void удалить
-    info: InfoType;
-    results: T[];
-};
-export type InfoType = {
-    count: number;
-    next: Nullable<string>;
-    pages: number;
-    prev: Nullable<string>;
-};
+import { PaginationFC } from "./Pagination/PaginationFC";
 
 export type Nullable<T> = null | T;
 
@@ -32,6 +21,7 @@ export const Characters: React.FC = () => {
     // const [characters, setCharacters] = useState<CharacterType[]>([]);
     const characters = useAppSelector((state) => state.characters.characters);
     // const characters = useSelector < AppStoreType, CharacterType[] > ((state) => state.characters.characters);
+    const currentPage = useAppSelector((state) => state.characters.currentPage);
     const dispatch = useAppDispatch();
 
     const [searchRequest, setSearchRequest] = useState("");
@@ -39,13 +29,15 @@ export const Characters: React.FC = () => {
     const [genderValue, setGenderValue] = useState<GenderType>("All");
     const [speciesValue, setSpeciesValue] = useState<SpeciesType>("All");
 
+
     useEffect(() => {
-        dispatch(getCharacters());
-    }, []);
-    console.log(characters);
+        dispatch(getCharacters(currentPage));
+    }, [currentPage]);
+    // console.log(characters);
 
     return (
         <div className={styles.charactersBlock}>
+            <PaginationFC />
             <div className={styles.searchFilter}>
                 <Search setSearchRequest={setSearchRequest} />
                 <Status setStatusValue={setStatusValue} />

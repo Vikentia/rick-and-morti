@@ -2,12 +2,14 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { legacy_createStore as createStore, combineReducers, applyMiddleware } from 'redux'; //thunk
 import thunk, { ThunkAction, ThunkDispatch } from 'redux-thunk'; //thunk
 import { CharactersActionTypes, charactersReducer } from "./reducers/charactersReducer";
+import { EpisodesActionTypes, episodesReducer } from './reducers/episodesReducer';
 
 //@ts-ignore
 const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] as typeof compose || compose;
 
 export const rootReducer = combineReducers({
     characters: charactersReducer,
+    episodes: episodesReducer,
 })
 
 // export const store = createStore(rootReducer, applyMiddleware(thunk), composeEnhancers()) //thunk
@@ -25,6 +27,6 @@ export type AppStoreType = ReturnType<typeof store.getState>
 
 type AppDispatch = ThunkDispatch<AppStoreType, unknown, AllActionTypes>
 
-type AllActionTypes = CharactersActionTypes
+type AllActionTypes = CharactersActionTypes | EpisodesActionTypes
 
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppStoreType, unknown, AllActionTypes>

@@ -1,0 +1,32 @@
+.pagesNumber {
+    display: inline-flex;
+    justify-content: center;
+    min-width: 33px;
+    margin: 3px;
+    background-color: #fff;
+    font-size: large;
+    padding: 2px 5px;
+    border-radius: 25px;
+
+    &:hover {
+        background-color: #1890ff;
+        opacity: 0.5;
+        cursor: pointer;
+    }
+    &:active {
+        background-color: #1890ff;
+        opacity: 1;
+    }
+    &:focus-visible div {
+        font-weight: 900;
+        background-color: #1890ff;
+    }
+    &:visited {
+        font-weight: 900;
+        background-color: #1890ff;
+    }
+    .active {
+        font-weight: 900;
+        background-color: #1890ff;
+    }
+}

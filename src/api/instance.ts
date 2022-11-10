@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ResponseType } from '../components/Characters';
+import { Nullable } from '../components/Characters';
 import { CharacterType } from '../components/Character';
 export const instance = axios.create({
     baseURL: 'https://rickandmortyapi.com/api/',
@@ -9,10 +9,38 @@ export const instance = axios.create({
     //         Authorization: ''
     //  }
 })
+export type ResponseType<T = void> = {
+    //void удалить
+    info: InfoType;
+    results: T[];
+};
+export type InfoType = {
+    count: number;
+    next: Nullable<string>;
+    pages: number;
+    prev: Nullable<string>;
+};
+export type EpisodeType = {
+    id: number,
+    name: string,
+    air_date: string,
+    episode: string,
+    characters: string[],
+    url: string,
+    created: string
+}
 
 export const apiRickAndMorti = {
-    getCharacters() {
+    getCharactersInfo() {
         return instance
-            .get<ResponseType<CharacterType>>("character")
+            .get<ResponseType<InfoType>>("character")
+    },
+    getCharacters(currentPage:number) {
+        return instance
+            .get<ResponseType<CharacterType>>(`character?page=${currentPage}`)
+    },
+    getEpisodes() {
+        return instance
+            .get<ResponseType<EpisodeType>>("episode")
     }
 }
