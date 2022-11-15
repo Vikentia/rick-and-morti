@@ -4,6 +4,7 @@ import { ContentFC } from "./pages/Content";
 
 import { Layout } from "antd";
 import "antd/dist/antd.css";
+import { FooterFC } from "./pages/FooterFC";
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -22,7 +23,9 @@ export const App = () => {
                         <ContentFC />
                     </Content>
                 </Layout>
-                <Footer>Footer</Footer>
+                {/* <Footer> */}
+                    <FooterFC/>
+                {/* </Footer> */}
             </Layout>
         </div>
     );

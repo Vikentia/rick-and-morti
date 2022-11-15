@@ -1,8 +1,19 @@
 .navigation {
     height: 80vh;
+
     color: white;
     padding-left: 20px;
     a {
         display: block;
+    }
+    button {
+        background-color: #001529;
+        color: white;
+        border: none;
+        width: 80%;
+        height: 50px;
+        &:hover {
+            font-size: 1.3em;
+        }
     }
 }

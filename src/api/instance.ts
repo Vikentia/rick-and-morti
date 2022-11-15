@@ -39,8 +39,12 @@ export const apiRickAndMorti = {
         return instance
             .get<ResponseType<CharacterType>>(`character?page=${currentPage}`)
     },
-    getEpisodes() {
+    getEpisodesInfo() {
         return instance
-            .get<ResponseType<EpisodeType>>("episode")
-    }
+            .get<ResponseType<InfoType>>("episode")
+    },
+    getEpisodes(currentPage:number) {
+        return instance
+            .get<ResponseType<EpisodeType>>(`episode?page=${currentPage}`)
+    },
 }

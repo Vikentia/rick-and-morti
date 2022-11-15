@@ -13,6 +13,7 @@ export const setCharacters = (characters: CharacterType[]) => {
 export const setCharactersInfo = (info: InfoType) => {
     return { type: SET_CHARACTERS_INFO, payload: { info } } as const;
 }
+
 export const setCurrentPage = (currentPage:number) => {
     return { type: SET_CURRENT_PAGE, payload: { currentPage } } as const;
 }

@@ -1,0 +1,28 @@
+.contentBlock {
+    background-color: white;
+}
+
+.mainPhoto {
+    img {
+        width: 70%;
+    }
+    display: flex;
+    justify-content: center;
+}
+.photo {
+height: 350px;
+}
+.nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 200px;
+    button {
+        width: 200px;
+        height: 50px;
+        margin-left: 100px;
+        background-color: #001529;
+        color: white;
+        font-size: large;
+    }
+}

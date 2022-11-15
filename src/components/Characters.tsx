@@ -22,13 +22,13 @@ export const Characters: React.FC = () => {
     const characters = useAppSelector((state) => state.characters.characters);
     // const characters = useSelector < AppStoreType, CharacterType[] > ((state) => state.characters.characters);
     const currentPage = useAppSelector((state) => state.characters.currentPage);
+    const { pages } = useAppSelector((state) => state.characters.info);
     const dispatch = useAppDispatch();
 
     const [searchRequest, setSearchRequest] = useState("");
     const [statusValue, setStatusValue] = useState<StatusType>("All");
     const [genderValue, setGenderValue] = useState<GenderType>("All");
     const [speciesValue, setSpeciesValue] = useState<SpeciesType>("All");
-
 
     useEffect(() => {
         dispatch(getCharacters(currentPage));
@@ -37,7 +37,7 @@ export const Characters: React.FC = () => {
 
     return (
         <div className={styles.charactersBlock}>
-            <PaginationFC />
+            <PaginationFC pages={pages} currentPage={currentPage}/>
             <div className={styles.searchFilter}>
                 <Search setSearchRequest={setSearchRequest} />
                 <Status setStatusValue={setStatusValue} />

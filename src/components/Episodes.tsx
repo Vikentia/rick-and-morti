@@ -2,19 +2,23 @@ import React, { useEffect } from "react";
 import { useAppSelector, useAppDispatch } from "../redux/store";
 import { getEpisodes } from "../redux/reducers/episodesReducer";
 import { Episode } from "./Episode";
+import { PaginationFC } from "./Pagination/PaginationFC";
 
 export const Episodes = () => {
     const episodes = useAppSelector((state) => state.episodes.episodes);
+    const currentPage = useAppSelector((state) => state.episodes.currentPage);
+    const { pages } = useAppSelector((state) => state.characters.info);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(getEpisodes());
+        dispatch(getEpisodes(currentPage));
     }, []);
 
     console.log("episodes", episodes);
 
     return (
         <div>
+            <PaginationFC currentPage={currentPage} pages={pages}/>
             <p>Episodes</p>
             {episodes.map((item) => (
                 <Episode episode={item} />
