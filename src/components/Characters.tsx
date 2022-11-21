@@ -10,6 +10,7 @@ import { Status } from "./FilterCharacters/Status";
 import { Gender } from "./FilterCharacters/Gender";
 import { Species } from "./FilterCharacters/Species";
 import { PaginationFC } from "./Pagination/PaginationFC";
+import { setCharacterCurrentPage } from "../redux/actions/charactersAction";
 
 export type Nullable<T> = null | T;
 
@@ -33,11 +34,15 @@ export const Characters: React.FC = () => {
     useEffect(() => {
         dispatch(getCharacters(currentPage));
     }, [currentPage]);
-    // console.log(characters);
 
     return (
         <div className={styles.charactersBlock}>
-            <PaginationFC pages={pages} currentPage={currentPage}/>
+            <PaginationFC
+                pages={pages}
+                currentPage={currentPage}
+                //@ts-ignore
+                setCurrentPageAction={setCharacterCurrentPage}
+            />
             <div className={styles.searchFilter}>
                 <Search setSearchRequest={setSearchRequest} />
                 <Status setStatusValue={setStatusValue} />

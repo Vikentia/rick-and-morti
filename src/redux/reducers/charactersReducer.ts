@@ -7,9 +7,8 @@ import {
     setCharactersInfo,
     GetCharactersInfoActionType,
     SET_CHARACTERS_INFO,
-    GetCurrentPageActionType,
-    SET_CURRENT_PAGE,
-    setCurrentPage
+    SET_CHARACTERS_CURRENT_PAGE,
+    GetCharacterCurrentPageActionType
 } from '../actions/charactersAction';
 import { apiRickAndMorti, InfoType } from '../../api/instance';
 import { AppThunk } from "../store";
@@ -27,7 +26,7 @@ export const charactersReducer = (state = initialState, action: CharactersAction
             return { ...state, characters: action.payload.characters }
         case SET_CHARACTERS_INFO:
             return { ...state, info: action.payload.info }
-        case SET_CURRENT_PAGE:
+        case SET_CHARACTERS_CURRENT_PAGE:
             return { ...state, currentPage: action.payload.currentPage }
         default:
             return state; //в дефолте не надо возвращать копию, можно оригинал
@@ -50,4 +49,4 @@ export const getCharactersInfo = (): AppThunk => {
 
 //types
 type InitialStateType = typeof initialState // 
-export type CharactersActionTypes = GetCharactersActionType | GetCharactersInfoActionType | GetCurrentPageActionType
+export type CharactersActionTypes = GetCharactersActionType | GetCharactersInfoActionType | GetCharacterCurrentPageActionType

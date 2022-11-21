@@ -3,15 +3,25 @@ import { useAppSelector, useAppDispatch } from "../../redux/store";
 import { createPages } from "../../utils/pagesCreator";
 import { getCharactersInfo } from "../../redux/reducers/charactersReducer";
 import styles from "./Pagination.module.scss";
-import { setCurrentPage } from "../../redux/actions/charactersAction";
-import { setEpisodesCurrentPage } from "../../redux/actions/episodesAction";
+import {
+    GetEpisodesCurrentPageActionType,
+    setEpisodesCurrentPage,
+} from "../../redux/actions/episodesAction";
 import { getEpisodesInfo } from "../../redux/reducers/episodesReducer";
+import { GetCharacterCurrentPageActionType } from "../../redux/actions/charactersAction";
 
 type PropsType = {
     pages: number;
     currentPage: number;
+    setCurrentPageAction:
+        | GetCharacterCurrentPageActionType
+        | GetEpisodesCurrentPageActionType;
 };
-export const PaginationFC: React.FC<PropsType> = ({ pages, currentPage }) => {
+export const PaginationFC: React.FC<PropsType> = ({
+    pages,
+    currentPage,
+    setCurrentPageAction,
+}) => {
     const dispatch = useAppDispatch();
     const pagesArr = [] as number[];
     createPages(pagesArr, pages, currentPage);
@@ -23,13 +33,11 @@ export const PaginationFC: React.FC<PropsType> = ({ pages, currentPage }) => {
         dispatch(getEpisodesInfo());
     }, []);
 
-
-    const getNextPage = (
-        e: React.MouseEvent<HTMLElement, MouseEvent>
-    ) => {
+    const getNextPage = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
         console.log("СТРАНИЦА==>", e.currentTarget.firstChild?.textContent);
         dispatch(
-            setCurrentPage(
+            //@ts-ignore
+            setCurrentPageAction(
                 parseInt(e.currentTarget.firstChild?.textContent + "")
             )
         );
@@ -47,7 +55,11 @@ export const PaginationFC: React.FC<PropsType> = ({ pages, currentPage }) => {
                     <div>{item}</div>
                 </div>
             ))}
-            {<span> ... {pages}</span>}
+            {
+                <span>
+                    ({currentPage} from {pages})
+                </span>
+            }
         </div>
     );
 };

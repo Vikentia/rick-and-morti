@@ -1,9 +1,10 @@
 import { Dispatch } from "redux"
-import { CharacterType } from "../../components/Character"
-import { GetCharactersActionType, SET_CHARACTERS, setCharacters, GetCurrentPageActionType, SET_CURRENT_PAGE } from "../actions/charactersAction"
 import { apiRickAndMorti, EpisodeType, InfoType } from '../../api/instance';
 import { AppThunk } from "../store";
-import { GetEpisodesActionType, SET_EPISODES, setEpisodes, GetEpisodesInfoActionType, setEpisodesInfo, SET_EPISODES_INFO } from '../actions/episodesAction';
+import {
+    GetEpisodesActionType, SET_EPISODES, setEpisodes, GetEpisodesInfoActionType, setEpisodesInfo, SET_EPISODES_INFO,
+    GetEpisodesCurrentPageActionType, SET_EPISODES_CURRENT_PAGE
+} from '../actions/episodesAction';
 
 const initialState = {
     episodes: [] as EpisodeType[], //!!!!
@@ -16,7 +17,7 @@ export const episodesReducer = (state = initialState, action: EpisodesActionType
     switch (action.type) {
         case SET_EPISODES:
             return { ...state, episodes: action.payload.episodes }
-        case SET_CURRENT_PAGE:
+        case SET_EPISODES_CURRENT_PAGE:
             return { ...state, currentPage: action.payload.currentPage }
         case SET_EPISODES_INFO:
             return { ...state, info: action.payload.info }
@@ -44,4 +45,4 @@ export const getEpisodesInfo = (): AppThunk => {
 
 //types
 type InitialStateType = typeof initialState // 
-export type EpisodesActionTypes = GetEpisodesActionType | GetCurrentPageActionType | GetEpisodesInfoActionType
+export type EpisodesActionTypes = GetEpisodesActionType | GetEpisodesCurrentPageActionType | GetEpisodesInfoActionType
