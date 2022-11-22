@@ -25,9 +25,9 @@ export const Episodes = () => {
                 //@ts-ignore
                 setCurrentPageAction={setEpisodesCurrentPage}
             />
-            <p>Episodes</p>
+            {/* <p>Episodes</p> */}
             {episodes.map((item) => (
-                <Episode episode={item} />
+                <Episode key={item.id} episode={item} />
             ))}
         </div>
     );

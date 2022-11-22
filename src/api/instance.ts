@@ -10,7 +10,6 @@ export const instance = axios.create({
     //  }
 })
 export type ResponseType<T = void> = {
-    //void удалить
     info: InfoType;
     results: T[];
 };
@@ -26,6 +25,14 @@ export type EpisodeType = {
     air_date: string,
     episode: string,
     characters: string[],
+    url: string,
+    created: string
+}
+export type LocationType = {
+    id: number,
+    name: string,
+    type: string,
+    residents: string[],
     url: string,
     created: string
 }
@@ -46,5 +53,13 @@ export const apiRickAndMorti = {
     getEpisodes(currentPage:number) {
         return instance
             .get<ResponseType<EpisodeType>>(`episode?page=${currentPage}`)
+    },
+    getLocationsInfo() {
+        return instance
+            .get<ResponseType<InfoType>>("location")
+    },
+    getLocations(currentPage:number) {
+        return instance
+            .get<ResponseType<LocationType>>(`location?page=${currentPage}`)
     },
 }

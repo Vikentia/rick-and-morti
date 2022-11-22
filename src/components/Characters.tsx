@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/store";
-import styles from "./Characters.module.scss";
 import { getCharacters } from "../redux/reducers/charactersReducer";
 import { Character } from "./Character";
-import { Row } from "antd";
 import { Search } from "./Search";
 import { Status } from "./FilterCharacters/Status";
 import { Gender } from "./FilterCharacters/Gender";
 import { Species } from "./FilterCharacters/Species";
 import { PaginationFC } from "./Pagination/PaginationFC";
 import { setCharacterCurrentPage } from "../redux/actions/charactersAction";
+import { Row } from "antd";
+import styles from "./Characters.module.scss";
 
 export type Nullable<T> = null | T;
 

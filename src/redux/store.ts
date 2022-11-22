@@ -3,6 +3,7 @@ import { legacy_createStore as createStore, combineReducers, applyMiddleware } f
 import thunk, { ThunkAction, ThunkDispatch } from 'redux-thunk'; //thunk
 import { CharactersActionTypes, charactersReducer } from "./reducers/charactersReducer";
 import { EpisodesActionTypes, episodesReducer } from './reducers/episodesReducer';
+import { LocationsActionTypes, locationsReducer } from './reducers/locationsReducer';
 
 //@ts-ignore
 const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] as typeof compose || compose;
@@ -10,6 +11,7 @@ const composeEnhancers = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] as typeo
 export const rootReducer = combineReducers({
     characters: charactersReducer,
     episodes: episodesReducer,
+    locations: locationsReducer,
 })
 
 // export const store = createStore(rootReducer, applyMiddleware(thunk), composeEnhancers()) //thunk
@@ -27,6 +29,6 @@ export type AppStoreType = ReturnType<typeof store.getState>
 
 type AppDispatch = ThunkDispatch<AppStoreType, unknown, AllActionTypes>
 
-type AllActionTypes = CharactersActionTypes | EpisodesActionTypes
+type AllActionTypes = CharactersActionTypes | EpisodesActionTypes | LocationsActionTypes
 
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppStoreType, unknown, AllActionTypes>

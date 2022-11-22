@@ -1,4 +1,4 @@
-import { Dispatch } from "redux"
+
 import { apiRickAndMorti, EpisodeType, InfoType } from '../../api/instance';
 import { AppThunk } from "../store";
 import {
@@ -31,7 +31,6 @@ export const getEpisodes = (currentPage: number): AppThunk => {
     return (dispatch) => {
         apiRickAndMorti.getEpisodes(currentPage)
             .then((res) => dispatch(setEpisodes(res.data.results)));
-        // .then((res) => console.log('res', res)            );
     }
 }
 

@@ -18,7 +18,7 @@ export const setCharacterCurrentPage = (currentPage:number) => {
     return { type: SET_CHARACTERS_CURRENT_PAGE, payload: { currentPage } } as const;
 }
 
-
+//types
 export type GetCharactersActionType = ReturnType<typeof setCharacters>
 export type GetCharactersInfoActionType = ReturnType<typeof setCharactersInfo>
 export type GetCharacterCurrentPageActionType = ReturnType<typeof setCharacterCurrentPage>

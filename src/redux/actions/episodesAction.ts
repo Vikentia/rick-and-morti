@@ -15,6 +15,8 @@ export const setEpisodesCurrentPage = (currentPage: number) => {
 export const setEpisodesInfo = (info: InfoType) => {
     return { type: SET_EPISODES_INFO, payload: { info } } as const;
 }
+
+//types
 export type GetEpisodesActionType = ReturnType<typeof setEpisodes>
 export type GetEpisodesCurrentPageActionType = ReturnType<typeof setEpisodesCurrentPage>
 export type GetEpisodesInfoActionType = ReturnType<typeof setEpisodesInfo>

@@ -1,4 +1,3 @@
-import { Dispatch } from "redux"
 import { CharacterType } from "../../components/Character"
 import {
     GetCharactersActionType,

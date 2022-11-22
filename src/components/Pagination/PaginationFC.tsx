@@ -9,6 +9,7 @@ import {
 } from "../../redux/actions/episodesAction";
 import { getEpisodesInfo } from "../../redux/reducers/episodesReducer";
 import { GetCharacterCurrentPageActionType } from "../../redux/actions/charactersAction";
+import { getLocationsInfo } from "../../redux/reducers/locationsReducer";
 
 type PropsType = {
     pages: number;
@@ -26,11 +27,12 @@ export const PaginationFC: React.FC<PropsType> = ({
     const pagesArr = [] as number[];
     createPages(pagesArr, pages, currentPage);
 
-    console.log("currentPage", currentPage);
+    // console.log("currentPage", currentPage);
 
     useEffect(() => {
         dispatch(getCharactersInfo());
         dispatch(getEpisodesInfo());
+        dispatch(getLocationsInfo());
     }, []);
 
     const getNextPage = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {

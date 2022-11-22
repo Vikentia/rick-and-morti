@@ -14,6 +14,7 @@ export const Episode: React.FC<PropsType> = ({ episode }) => {
                 <p style={{ width: 70 }}>{episode.episode}</p>
                 <p style={{ width: 200 }}>{episode.air_date}</p>
             </div>
+            <hr style={{color:'grey'}}/>
         </div>
     );
 };
