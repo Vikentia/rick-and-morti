@@ -13,20 +13,8 @@
         opacity: 0.5;
         cursor: pointer;
     }
-    &:active {
+    & :global(div.active) {
         background-color: #1890ff;
         opacity: 1;
-    }
-    &:focus-visible div {
-        font-weight: 900;
-        background-color: #1890ff;
-    }
-    &:visited {
-        font-weight: 900;
-        background-color: #1890ff;
-    }
-    .active {
-        font-weight: 900;
-        background-color: #1890ff;
     }
 }
